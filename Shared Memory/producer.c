@@ -20,7 +20,7 @@ int main()
     int shm_id, i = 0;
     struct shared_memory *mem;
     char sentence[100];
-    
+
     s_key = ftok("hello", 1);
     if (s_key == -1)
     {

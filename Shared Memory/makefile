@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wconversion -pedantic-errors -Wextra -std=c11
 
-PRODUCER_SRC = producer.c
-CONSUMER_SRC = consumer.c
+PRODUCER_SRC = adder.c
+CONSUMER_SRC = result.c
 
-PRODUCER_OUT = producer
-CONSUMER_OUT = consumer
+PRODUCER_OUT = adder
+CONSUMER_OUT = result
 
 build:
 	${CC} ${CFLAGS} ${PRODUCER_SRC} -o ${PRODUCER_OUT}
