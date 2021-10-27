@@ -4,33 +4,30 @@
 int main()
 {
     printf("Executing program...\n");
-    int pid;
+    int pid = getpid();
 
+    const char* programs[3] = {"./hello", "./world", "./sit"};
     pid = fork();
-    if (pid == 0)
-    {
-        execl("./hello", "./hello", NULL);
 
-    }
-    else
+    for (int i = 0; i < 3; ++i)
     {
-        sleep(1);
-        pid = fork();
-
         if (pid == 0)
-            execl("./world", "./world", NULL);
+        {
+            const char* program_name = programs[i];
+            execl(program_name, program_name, NULL);
+        }
         else
         {
-            sleep(1);
             pid = fork();
-            if (pid == 0)
-                execl("./sit", "./sit", NULL);
+            sleep(1);
         }
-           
     }
-
-    sleep(1);
-    printf("Finished execution...\n");
+    
+    if (pid != 0)
+    {
+        sleep(1);
+        printf("Finished execution...\n");
+    }
 
 
 }
