@@ -4,7 +4,9 @@ int main()
 {
     key_t s_key;
     int shm_id;
-    shm_t* mem = 0;
+
+    int sum = 0;
+    shm_t* mem;
 
     size_t shm_size = sizeof(int);
 
@@ -22,7 +24,18 @@ int main()
     if ((mem = (shm_t*)shmat(shm_id, NULL, 0)) == (shm_t*)-1)
         perror("shmat");
 
-    printf("Value: %d\n", *mem);
+    *mem = 0;
+
+    while (1)
+    {
+        if (*mem != 0)
+        {
+            sum += *mem;
+            printf("Sum: %d\n", sum);
+
+            *mem = 0;
+        }
+    }
 
     return 0;
 }

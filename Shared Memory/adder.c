@@ -4,7 +4,8 @@ int main()
 {
     key_t s_key;
     int shm_id;
-    shm_t* mem = 0;
+
+    shm_t* mem;
 
     size_t shm_size = sizeof(int);
 
@@ -21,13 +22,11 @@ int main()
 
     if ((mem = (shm_t*)shmat(shm_id, NULL, 0)) == (shm_t*)-1)
         perror("shmat");
-
     
     printf("Enter a number:");
     scanf("%d", mem);
 
     printf("Value: %d\n", *mem);
-    sleep(10);
 
     return 0;
 }
