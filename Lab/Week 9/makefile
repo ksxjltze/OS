@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wconversion -Wextra -pedantic-errors -std=c11
 
 EXE = lab
-SRC = increment.c
+SRC = producer_consumer.c
 
 all: build
 	./${EXE}
